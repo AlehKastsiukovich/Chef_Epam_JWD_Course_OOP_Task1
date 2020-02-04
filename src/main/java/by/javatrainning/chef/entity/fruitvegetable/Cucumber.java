@@ -3,7 +3,6 @@ package by.javatrainning.chef.entity.fruitvegetable;
 import by.javatrainning.chef.entity.VegetableColor;
 import by.javatrainning.chef.entity.fruitvegetable.fruitenum.CucumberVariety;
 import by.javatrainning.chef.entity.fruitvegetable.fruitenum.SoilType;
-import java.util.Random;
 
 public class Cucumber extends FruitVegetable {
     private CucumberVariety cucumberVariety;
