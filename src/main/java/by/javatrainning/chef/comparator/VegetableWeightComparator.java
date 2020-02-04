@@ -1,7 +1,6 @@
 package by.javatrainning.chef.comparator;
 
 import by.javatrainning.chef.entity.Vegetable;
-
 import java.util.Comparator;
 
 public class VegetableWeightComparator implements Comparator<Vegetable> {
