@@ -6,7 +6,7 @@ import by.javatraining.chef.exception.ServiceException;
 public class ServiceValidator {
 
     public static boolean checkSalad(Salad salad) throws ServiceException {
-         return salad != null || salad.getListOfVegetables() != null;
+         return salad != null && salad.getListOfVegetables() != null;
     }
 
 }
