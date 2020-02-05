@@ -1,8 +1,8 @@
 package by.javatraining.chef.entity;
 
 
-public abstract class Vegetable {
-    private double weight;
+public abstract class Vegetable implements Comparable<Vegetable> {
+    private Double weight;
     private double proteins;
     private double carbohydrates;
     private double calories;
@@ -35,6 +35,10 @@ public abstract class Vegetable {
 
     public VegetableColor getColor() {
         return color;
+    }
+
+    public int compareTo(Vegetable vegetable) {
+        return this.weight.compareTo(vegetable.weight);
     }
 
     public String toString() {

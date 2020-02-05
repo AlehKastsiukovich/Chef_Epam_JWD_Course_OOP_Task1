@@ -13,9 +13,9 @@ import java.util.TreeSet;
 public class SaladService {
 
     public double calculateSaladCalories(Salad salad) throws ServiceException {
-        if (!ServiceValidator.checkSalad(salad)) {
-            throw new ServiceException();
-        }
+            if (!ServiceValidator.checkSalad(salad)) {
+                throw new ServiceException();
+            }
 
         double caloriesSum = 0;
 
@@ -67,5 +67,29 @@ public class SaladService {
 
     private boolean isInRange(double value, double in, double out) {
         return (in < out) && (value >= in && value <= out);
+    }
+
+    public boolean addVegetable(Vegetable vegetable, Salad salad) throws ServiceException {
+        if (vegetable == null) {
+            throw new ServiceException();
+        }
+
+        if (!ServiceValidator.checkSalad(salad)) {
+            throw new ServiceException();
+        }
+
+        return salad.getListOfVegetables().add(vegetable);
+    }
+
+    public boolean removeVegetable(Vegetable vegetable, Salad salad) throws ServiceException {
+        if (vegetable == null) {
+            throw new ServiceException();
+        }
+
+        if (!ServiceValidator.checkSalad(salad)) {
+            throw new ServiceException();
+        }
+
+        return salad.getListOfVegetables().remove(vegetable);
     }
 }

@@ -11,10 +11,6 @@ public abstract class LeafyVegetable extends Vegetable {
                           double calories, VegetableColor color, LeafyVegetableType type) {
         super(weight, proteins, carbohydrates, calories, color);
 
-        if (leafyVegetableType == null) {
-            throw new NullPointerException();
-        }
-
         leafyVegetableType = type;
     }
 
