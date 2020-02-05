@@ -2,19 +2,24 @@ package by.javatraining.chef.entity;
 
 
 public abstract class Vegetable implements Comparable<Vegetable> {
-    private Double weight;
-    private double proteins;
-    private double carbohydrates;
-    private double calories;
-    private VegetableColor color;
+    protected Integer id;
+    protected double weight;
+    protected double proteins;
+    protected double carbohydrates;
+    protected double calories;
 
-    public Vegetable(double weight, double proteins, double carbohydrates,
-                     double calories, VegetableColor color) {
+    public Vegetable(double weight, double proteins, double carbohydrates, double calories) {
         this.weight = weight;
         this.proteins = proteins;
         this.carbohydrates = carbohydrates;
         this.calories = calories;
-        this.color = color;
+    }
+
+    public Vegetable() {
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public double getWeight() {
@@ -33,16 +38,12 @@ public abstract class Vegetable implements Comparable<Vegetable> {
         return calories;
     }
 
-    public VegetableColor getColor() {
-        return color;
-    }
-
     public int compareTo(Vegetable vegetable) {
-        return this.weight.compareTo(vegetable.weight);
+        return this.id.compareTo(vegetable.id);
     }
 
     public String toString() {
         return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
-                + carbohydrates + ", " + calories + ", " + color + "]";
+                + carbohydrates + ", " + calories + "]";
     }
 }

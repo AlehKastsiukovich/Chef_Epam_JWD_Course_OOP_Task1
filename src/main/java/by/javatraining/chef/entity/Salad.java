@@ -31,6 +31,7 @@ public class Salad {
         this.vegetableSet = vegetableSet;
     }
 
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = hash * 31 + (saladName == null ? 0 : saladName.hashCode());
@@ -55,6 +56,7 @@ public class Salad {
         return true;
     }
 
+    @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[ ");
