@@ -15,12 +15,22 @@ public class Pepper extends FruitVegetable {
     public Pepper() {
         super(random() * PEPPER_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                     CALORIES, VegetableColor.RED, SoilType.OPEN);
+
+        if (pepperVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.pepperVariety = PepperVariety.CAYENNE;
     }
 
     public Pepper(PepperVariety pepperVariety) {
         super(random() * PEPPER_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.RED, SoilType.OPEN);
+
+        if (pepperVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.pepperVariety = pepperVariety;
     }
 
@@ -29,6 +39,10 @@ public class Pepper extends FruitVegetable {
     }
 
     public void setPepperVariety(PepperVariety pepperVariety) {
+        if (pepperVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.pepperVariety = pepperVariety;
     }
 

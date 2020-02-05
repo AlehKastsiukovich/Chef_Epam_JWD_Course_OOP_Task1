@@ -28,6 +28,10 @@ public class Tomato extends FruitVegetable {
     }
 
     public void setTomatoVariety(TomatoVariety tomatoVariety) {
+        if (tomatoVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.tomatoVariety = tomatoVariety;
     }
 

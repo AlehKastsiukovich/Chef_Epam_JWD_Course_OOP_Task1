@@ -20,6 +20,11 @@ public class Celery extends RootVegetable {
     public Celery(CeleryVariety celeryVariety) {
         super(Math.random() * CELERY_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.GREEN, SUGAR_PERCENT);
+
+        if (celeryVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.celeryVariety = celeryVariety;
     }
 
@@ -28,6 +33,10 @@ public class Celery extends RootVegetable {
     }
 
     public void setCeleryVariety(CeleryVariety celeryVariety) {
+        if (celeryVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.celeryVariety = celeryVariety;
     }
 

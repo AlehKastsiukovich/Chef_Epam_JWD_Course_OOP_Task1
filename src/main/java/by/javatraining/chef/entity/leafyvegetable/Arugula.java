@@ -20,6 +20,11 @@ public class Arugula extends LeafyVegetable {
     public Arugula(ArugulaVariety arugulaVariety) {
         super(Math.random() * ARUGULA_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.GREEN, LeafyVegetableType.LEAFY);
+
+        if (arugulaVariety == null) {
+            throw  new NullPointerException();
+        }
+
         this.arugulaVariety = arugulaVariety;
     }
 
@@ -28,6 +33,10 @@ public class Arugula extends LeafyVegetable {
     }
 
     public void setArugulaVariety(ArugulaVariety arugulaVariety) {
+        if (arugulaVariety == null) {
+            throw  new NullPointerException();
+        }
+
         this.arugulaVariety = arugulaVariety;
     }
 

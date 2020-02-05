@@ -12,6 +12,10 @@ public class Salad {
     }
 
     public Salad(Set<Vegetable> vegetableSet) {
+        if (vegetableSet == null) {
+            throw new NullPointerException();
+        }
+
         this.vegetableSet = vegetableSet;
     }
 
@@ -20,6 +24,10 @@ public class Salad {
     }
 
     public void setListOfVegetables(Set<Vegetable> vegetableSet) {
+        if (vegetableSet == null) {
+            throw new NullPointerException();
+        }
+
         this.vegetableSet = vegetableSet;
     }
 

@@ -10,6 +10,11 @@ public abstract class FruitVegetable extends Vegetable {
     public FruitVegetable(double weight, double proteins, double carbohydrates,
                           double calories, VegetableColor color, SoilType soilType) {
         super(weight, proteins, carbohydrates, calories, color);
+
+        if (soilType == null) {
+            throw new NullPointerException();
+        }
+
         this.soilType = soilType;
     }
 
@@ -18,6 +23,10 @@ public abstract class FruitVegetable extends Vegetable {
     }
 
     public void setSoilType(SoilType soilType) {
+        if (soilType == null) {
+            throw new NullPointerException();
+        }
+
         this.soilType = soilType;
     }
 }

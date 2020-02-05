@@ -20,6 +20,11 @@ public class Spinach extends LeafyVegetable {
     public Spinach(SpinachVariety variety) {
         super(Math.random() * SPINACH_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.GREEN, LeafyVegetableType.LEAFY);
+
+        if (variety == null) {
+            throw new NullPointerException();
+        }
+
         this.spinachVariety = variety;
     }
 
@@ -28,6 +33,10 @@ public class Spinach extends LeafyVegetable {
     }
 
     public void setSpinachVariety(SpinachVariety spinachVariety) {
+        if (spinachVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.spinachVariety = spinachVariety;
     }
 

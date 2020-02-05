@@ -20,6 +20,11 @@ public class Radish extends RootVegetable {
     public Radish(RadishVariety variety) {
         super(Math.random() * RADISH_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.PINK, SUGAR_PERCENT);
+
+        if (variety == null) {
+            throw new NullPointerException();
+        }
+
         this.variety = variety;
     }
 
@@ -28,6 +33,10 @@ public class Radish extends RootVegetable {
     }
 
     public void setVariety(RadishVariety variety) {
+        if (variety == null) {
+            throw new NullPointerException();
+        }
+
         this.variety = variety;
     }
 

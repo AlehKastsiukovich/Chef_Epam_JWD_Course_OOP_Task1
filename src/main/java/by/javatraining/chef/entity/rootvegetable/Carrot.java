@@ -20,6 +20,11 @@ public class Carrot extends RootVegetable {
     public Carrot(CarrotVariety carrotVariety) {
         super(Math.random() * CARROT_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.ORANGE, SUGAR_PERCENT);
+
+        if (carrotVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.carrotVariety = carrotVariety;
     }
 
@@ -28,6 +33,10 @@ public class Carrot extends RootVegetable {
     }
 
     public void setCarrotVariety(CarrotVariety carrotVariety) {
+        if (carrotVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.carrotVariety = carrotVariety;
     }
 

@@ -20,6 +20,10 @@ public class Lettuce extends LeafyVegetable {
     public Lettuce(LettuceVariety lettuceVariety) {
         super(Math.random() * LETTUCE_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.GREEN, LeafyVegetableType.LEAFY);
+        if (lettuceVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.lettuceVariety = lettuceVariety;
     }
 
@@ -28,6 +32,10 @@ public class Lettuce extends LeafyVegetable {
     }
 
     public void setLettuceVariety(LettuceVariety lettuceVariety) {
+        if (lettuceVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.lettuceVariety = lettuceVariety;
     }
 

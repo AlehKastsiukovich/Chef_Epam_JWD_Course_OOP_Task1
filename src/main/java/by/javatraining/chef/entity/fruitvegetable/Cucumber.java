@@ -20,6 +20,11 @@ public class Cucumber extends FruitVegetable {
     public Cucumber(CucumberVariety cucumberVariety) {
         super(Math.random() * CUCUMBER_MAX_WEIGHT, PROTEINS, CARBOHYDRATES,
                 CALORIES, VegetableColor.GREEN, SoilType.OPEN);
+
+        if (cucumberVariety == null) {
+            throw new NullPointerException();
+        }
+
         this.cucumberVariety = cucumberVariety;
     }
 
@@ -28,6 +33,9 @@ public class Cucumber extends FruitVegetable {
     }
 
     public void setCucumberVariety(CucumberVariety cucumberVariety) {
+        if (cucumberVariety == null) {
+            throw new NullPointerException();
+        }
         this.cucumberVariety = cucumberVariety;
     }
 

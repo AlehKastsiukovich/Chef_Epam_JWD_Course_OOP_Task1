@@ -9,6 +9,11 @@ public abstract class RootVegetable extends Vegetable {
     public RootVegetable(double weight, double proteins, double carbohydrates,
                          double calories, VegetableColor color, double sugarPercent) {
         super(weight, proteins, carbohydrates, calories, color);
+
+        if (!(sugarPercent > 0 && sugarPercent < 100)) {
+            throw new IllegalArgumentException();
+        }
+
         this.sugarPercent = sugarPercent;
     }
 
@@ -17,6 +22,10 @@ public abstract class RootVegetable extends Vegetable {
     }
 
     public void setSugarPercent(double sugarPercent) {
+        if (!(sugarPercent > 0 && sugarPercent < 100)) {
+            throw new IllegalArgumentException();
+        }
+
         this.sugarPercent = sugarPercent;
     }
 }

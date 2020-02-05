@@ -10,6 +10,11 @@ public abstract class LeafyVegetable extends Vegetable {
     public LeafyVegetable(double weight, double proteins, double carbohydrates,
                           double calories, VegetableColor color, LeafyVegetableType type) {
         super(weight, proteins, carbohydrates, calories, color);
+
+        if (leafyVegetableType == null) {
+            throw new NullPointerException();
+        }
+
         leafyVegetableType = type;
     }
 
@@ -18,6 +23,10 @@ public abstract class LeafyVegetable extends Vegetable {
     }
 
     public void setLeafyVegetableType(LeafyVegetableType leafyVegetableType) {
+        if (leafyVegetableType == null) {
+            throw new NullPointerException();
+        }
+
         this.leafyVegetableType = leafyVegetableType;
     }
 }
