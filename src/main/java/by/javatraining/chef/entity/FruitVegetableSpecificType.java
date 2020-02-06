@@ -1,6 +1,6 @@
 package by.javatraining.chef.entity;
 
-public enum FruitVegetableExample {
+public enum FruitVegetableSpecificType {
     CUCUMBER,
     PEPPER,
     TOMATO

@@ -1,6 +1,6 @@
 package by.javatraining.chef.entity;
 
-public enum LeafyVegetableExample {
+public enum LeafyVegetableSpecificType {
     ARUGULA,
     LETTUCE,
     SPINACH

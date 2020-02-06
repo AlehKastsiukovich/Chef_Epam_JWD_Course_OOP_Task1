@@ -1,15 +1,15 @@
 package by.javatraining.chef.entity;
 
 public class LeafyVegetable extends Vegetable {
-    private LeafyVegetableExample vegetable;
+    private LeafyVegetableSpecificType vegetable;
 
     public LeafyVegetable(double weight, double proteins, double carbohydrates,
-                          double calories, LeafyVegetableExample example) {
+                          double calories, LeafyVegetableSpecificType example) {
         super(weight, proteins, carbohydrates, calories);
         this.vegetable = example;
     }
 
-    public LeafyVegetable(LeafyVegetableExample example) {
+    public LeafyVegetable(LeafyVegetableSpecificType example) {
         this.vegetable = example;
     }
 
@@ -17,11 +17,11 @@ public class LeafyVegetable extends Vegetable {
 
     }
 
-    public LeafyVegetableExample getVegetable() {
+    public LeafyVegetableSpecificType getVegetable() {
         return vegetable;
     }
 
-    public void setVegetable(LeafyVegetableExample vegetable) {
+    public void setVegetable(LeafyVegetableSpecificType vegetable) {
         this.vegetable = vegetable;
     }
 

@@ -1,15 +1,15 @@
 package by.javatraining.chef.entity;
 
 public class RootVegetable extends Vegetable {
-    private RootVegetableExample vegetable;
+    private RootVegetableSpecificType vegetable;
 
     public RootVegetable(double weight, double proteins, double carbohydrates,
-                         double calories, RootVegetableExample example) {
+                         double calories, RootVegetableSpecificType example) {
         super(weight, proteins, carbohydrates, calories);
         this.vegetable = example;
     }
 
-    public RootVegetable(RootVegetableExample example) {
+    public RootVegetable(RootVegetableSpecificType example) {
         this.vegetable = example;
     }
 
@@ -17,11 +17,11 @@ public class RootVegetable extends Vegetable {
 
     }
 
-    public RootVegetableExample getVegetable() {
+    public RootVegetableSpecificType getVegetable() {
         return vegetable;
     }
 
-    public void setVegetable(RootVegetableExample vegetable) {
+    public void setVegetable(RootVegetableSpecificType vegetable) {
         this.vegetable = vegetable;
     }
 

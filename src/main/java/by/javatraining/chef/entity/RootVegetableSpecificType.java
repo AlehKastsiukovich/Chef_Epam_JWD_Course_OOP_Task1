@@ -1,6 +1,6 @@
 package by.javatraining.chef.entity;
 
-public enum RootVegetableExample {
+public enum RootVegetableSpecificType {
     CARROT,
     CELERY,
     RADISH;
