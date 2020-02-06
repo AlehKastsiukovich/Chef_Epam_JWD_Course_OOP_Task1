@@ -8,15 +8,16 @@ import java.util.TreeSet;
 public class VegetableRepositoryImpl implements VegetableRepository {
     private Set<Vegetable> repository;
 
-    public VegetableRepositoryImpl() {
+    private VegetableRepositoryImpl() {
         repository = new TreeSet<>();
     }
 
-    public VegetableRepositoryImpl(Set<Vegetable> vegetableSet) throws VegetableRepositoryException {
-        if (vegetableSet == null) {
-            throw new VegetableRepositoryException();
-        }
-        repository = vegetableSet;
+    public static class VegetableRepositoryImplHolder {
+        public static final VegetableRepositoryImpl instance = new VegetableRepositoryImpl();
+    }
+
+    public VegetableRepositoryImpl getInstance() {
+        return VegetableRepositoryImplHolder.instance;
     }
 
     @Override
