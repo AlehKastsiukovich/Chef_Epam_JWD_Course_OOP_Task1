@@ -5,10 +5,7 @@ import by.javatraining.chef.exception.ServiceException;
 import by.javatraining.chef.exception.VegetableRepositoryException;
 import by.javatraining.chef.repository.VegetableRepository;
 import by.javatraining.chef.repository.VegetableRepositoryImpl;
-import by.javatraining.chef.repository.specification.SaladSpecification;
-import by.javatraining.chef.repository.specification.SaladSpecificationByCaloriesRange;
-import by.javatraining.chef.repository.specification.SaladSpecificationFindRangeVegetableByIdRange;
-import by.javatraining.chef.repository.specification.SaladSpecificationSortById;
+import by.javatraining.chef.repository.specification.*;
 
 import java.util.Set;
 
@@ -86,5 +83,13 @@ public class SaladService {
         }
     }
 
-    public Set<Vegetable> sortyRepositorySet
+    public Set<Vegetable> sortRepositorySetByName() throws ServiceException {
+        SaladSpecification specification = new SaladSpecificationSortByName();
+
+        try {
+            return repository.query(specification);
+        } catch (VegetableRepositoryException e) {
+            throw new ServiceException();
+        }
+    }
 }
