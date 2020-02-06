@@ -7,6 +7,9 @@ import by.javatraining.chef.repository.VegetableRepository;
 import by.javatraining.chef.repository.VegetableRepositoryImpl;
 import by.javatraining.chef.repository.specification.SaladSpecification;
 import by.javatraining.chef.repository.specification.SaladSpecificationByCaloriesRange;
+import by.javatraining.chef.repository.specification.SaladSpecificationFindRangeVegetableByIdRange;
+import by.javatraining.chef.repository.specification.SaladSpecificationSortById;
+
 import java.util.Set;
 
 public class SaladService {
@@ -62,4 +65,26 @@ public class SaladService {
             throw new ServiceException();
         }
     }
+
+    public Set<Vegetable> findSaladComponentsByIdRange(int inRange, int outRange) throws ServiceException {
+        SaladSpecification specification = new SaladSpecificationFindRangeVegetableByIdRange(inRange, outRange);
+
+        try {
+            return repository.query(specification);
+        } catch (VegetableRepositoryException e) {
+            throw new ServiceException();
+        }
+    }
+
+    public Set<Vegetable> sortRepositorySetById() throws ServiceException {
+        SaladSpecification specification = new SaladSpecificationSortById();
+
+        try {
+            return repository.query(specification);
+        } catch (VegetableRepositoryException e) {
+            throw new ServiceException();
+        }
+    }
+
+    public Set<Vegetable> sortyRepositorySet
 }
