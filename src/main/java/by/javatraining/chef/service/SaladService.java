@@ -3,23 +3,53 @@ package by.javatraining.chef.service;
 import by.javatraining.chef.comparator.VegetableCaloriesComparator;
 import by.javatraining.chef.comparator.VegetableNameComparator;
 import by.javatraining.chef.comparator.VegetableWeightComparator;
-import by.javatraining.chef.entity.Salad;
 import by.javatraining.chef.entity.Vegetable;
 import by.javatraining.chef.exception.ServiceException;
+import by.javatraining.chef.exception.VegetableRepositoryException;
+import by.javatraining.chef.repository.VegetableRepository;
+import by.javatraining.chef.repository.VegetableRepositoryImpl;
 import by.javatraining.chef.validator.ServiceValidator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class SaladService {
+    private static VegetableRepository repository = VegetableRepositoryImpl.getInstance();
 
-    public double calculateSaladCalories(Salad salad) throws ServiceException {
-            if (!ServiceValidator.checkSalad(salad)) {
-                throw new ServiceException();
-            }
+    public static class SaladServiceHolder {
+        public static final SaladService instance = new SaladService();
+    }
 
+    public static SaladService getInstance() {
+        return SaladServiceHolder.instance;
+    }
+
+    public void addVegetable(Vegetable vegetable) throws ServiceException {
+        if (vegetable == null) {
+            throw new ServiceException();
+        }
+
+        try {
+            repository.add(vegetable);
+        } catch (VegetableRepositoryException e) {
+            throw new ServiceException();
+        }
+    }
+
+    public void removeVegetable(Vegetable vegetable) throws ServiceException {
+        if (vegetable == null) {
+            throw new ServiceException();
+        }
+        try {
+            repository.remove(vegetable);
+        } catch (VegetableRepositoryException e) {
+            throw new ServiceException();
+        }
+    }
+
+    public double calculateSaladCalories() {
         double caloriesSum = 0;
 
-        for (Vegetable vegetable: salad.getListOfVegetables()) {
+        for (Vegetable vegetable: repository.getAll()) {
             caloriesSum += vegetable.getCalories();
         }
 
@@ -49,14 +79,10 @@ public class SaladService {
         return vegetableSet;
     }
 
-    public Set<Vegetable> findSaladComponentsInCaloriesRange(Salad salad, double in, double out) throws ServiceException {
-        if (!ServiceValidator.checkSalad(salad)) {
-            throw new ServiceException();
-        }
-
+    public Set<Vegetable> findSaladComponentsInCaloriesRange(double in, double out) throws ServiceException {
         Set<Vegetable> vegetableSet = new TreeSet<>();
 
-        for (Vegetable vegetable : salad.getListOfVegetables()) {
+        for (Vegetable vegetable : repository.getAll()) {
             if (isInRange(vegetable.getCalories(), in, out)) {
                 vegetableSet.add(vegetable);
             }
@@ -69,27 +95,4 @@ public class SaladService {
         return (in < out) && (value >= in && value <= out);
     }
 
-    public boolean addVegetable(Vegetable vegetable, Salad salad) throws ServiceException {
-        if (vegetable == null) {
-            throw new ServiceException();
-        }
-
-        if (!ServiceValidator.checkSalad(salad)) {
-            throw new ServiceException();
-        }
-
-        return salad.getListOfVegetables().add(vegetable);
-    }
-
-    public boolean removeVegetable(Vegetable vegetable, Salad salad) throws ServiceException {
-        if (vegetable == null) {
-            throw new ServiceException();
-        }
-
-        if (!ServiceValidator.checkSalad(salad)) {
-            throw new ServiceException();
-        }
-
-        return salad.getListOfVegetables().remove(vegetable);
-    }
 }

@@ -16,7 +16,7 @@ public class VegetableRepositoryImpl implements VegetableRepository {
         public static final VegetableRepositoryImpl instance = new VegetableRepositoryImpl();
     }
 
-    public VegetableRepositoryImpl getInstance() {
+    public static VegetableRepositoryImpl getInstance() {
         return VegetableRepositoryImplHolder.instance;
     }
 
@@ -50,6 +50,5 @@ public class VegetableRepositoryImpl implements VegetableRepository {
         }
 
         repository.remove(vegetable);
-
     }
 }
