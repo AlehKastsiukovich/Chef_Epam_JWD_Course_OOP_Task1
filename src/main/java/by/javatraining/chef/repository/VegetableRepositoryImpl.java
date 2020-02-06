@@ -2,6 +2,8 @@ package by.javatraining.chef.repository;
 
 import by.javatraining.chef.entity.Vegetable;
 import by.javatraining.chef.exception.VegetableRepositoryException;
+import by.javatraining.chef.repository.specification.SaladSpecification;
+
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -26,7 +28,7 @@ public class VegetableRepositoryImpl implements VegetableRepository {
     }
 
     @Override
-    public Set<Vegetable> query(VegetableSpecification specification) throws VegetableRepositoryException {
+    public Set<Vegetable> query(SaladSpecification specification) throws VegetableRepositoryException {
         if (specification == null) {
             throw new VegetableRepositoryException();
         }
