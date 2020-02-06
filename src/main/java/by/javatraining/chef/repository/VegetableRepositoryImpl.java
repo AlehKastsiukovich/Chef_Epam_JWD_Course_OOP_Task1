@@ -1,32 +1,54 @@
 package by.javatraining.chef.repository;
 
 import by.javatraining.chef.entity.Vegetable;
+import by.javatraining.chef.exception.VegetableRepositoryException;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class VegetableRepositoryImpl implements VegetableRepository{
-    private Set<Vegetable> data;
+public class VegetableRepositoryImpl implements VegetableRepository {
+    private Set<Vegetable> repository;
 
-    public void addVegetable(Vegetable vegetable) {
-        data.add(vegetable);
+    public VegetableRepositoryImpl() {
+        repository = new TreeSet<>();
     }
 
-    public void removeVegetable(Vegetable vegetable) {
-        data.remove(vegetable);
+    public VegetableRepositoryImpl(Set<Vegetable> vegetableSet) throws VegetableRepositoryException {
+        if (vegetableSet == null) {
+            throw new VegetableRepositoryException();
+        }
+        repository = vegetableSet;
     }
 
-    public void updateVegetable(Vegetable vegetable) {
-
+    @Override
+    public Set<Vegetable> getAll() {
+        return repository;
     }
 
-    public Set<Vegetable> getCollection() {
-        return data;
+    @Override
+    public Set<Vegetable> query(VegetableSpecification specification) throws VegetableRepositoryException {
+        if (specification == null) {
+            throw new VegetableRepositoryException();
+        }
+
+        return specification.query();
     }
 
-    public Set<Vegetable> getData() {
-        return data;
+    @Override
+    public void add(Vegetable vegetable) throws VegetableRepositoryException {
+        if (vegetable == null) {
+           throw new VegetableRepositoryException();
+        }
+
+        repository.add(vegetable);
     }
 
-    public void setData(Set<Vegetable> data) {
-        this.data = data;
+    @Override
+    public void remove(Vegetable vegetable) throws VegetableRepositoryException {
+        if (vegetable == null) {
+            throw new VegetableRepositoryException();
+        }
+
+        repository.remove(vegetable);
+
     }
 }
