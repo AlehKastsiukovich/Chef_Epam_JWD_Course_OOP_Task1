@@ -6,10 +6,11 @@ import by.javatraining.chef.exception.VegetableRepositoryException;
 import by.javatraining.chef.repository.VegetableRepository;
 import by.javatraining.chef.repository.VegetableRepositoryImpl;
 import by.javatraining.chef.repository.specification.*;
-
+import org.apache.log4j.Logger;
 import java.util.Set;
 
 public class SaladService {
+    private static final Logger logger = Logger.getLogger(SaladService.class);
     private static VegetableRepository repository = VegetableRepositoryImpl.getInstance();
 
     public static class SaladServiceHolder {
@@ -22,23 +23,27 @@ public class SaladService {
 
     public void addVegetable(Vegetable vegetable) throws ServiceException {
         if (vegetable == null) {
+            logger.debug("Enter null object to addVegetable method!");
             throw new ServiceException();
         }
 
         try {
             repository.add(vegetable);
         } catch (VegetableRepositoryException e) {
+            logger.error("Can't add data to repository!", e);
             throw new ServiceException();
         }
     }
 
     public void removeVegetable(Vegetable vegetable) throws ServiceException {
         if (vegetable == null) {
+            logger.debug("Enter null object to addVegetable method!");
             throw new ServiceException();
         }
         try {
             repository.remove(vegetable);
         } catch (VegetableRepositoryException e) {
+            logger.error("Can't remove data from repository!", e);
             throw new ServiceException();
         }
     }
@@ -49,7 +54,7 @@ public class SaladService {
         for (Vegetable vegetable: repository.getAll()) {
             caloriesSum += vegetable.getCalories();
         }
-
+        logger.info("Sum of calories is : " + caloriesSum);
         return caloriesSum;
     }
 
@@ -59,6 +64,7 @@ public class SaladService {
         try {
             return  repository.query(specification);
         } catch (VegetableRepositoryException e) {
+            logger.error("Problems with query to repository!", e);
             throw new ServiceException();
         }
     }
@@ -69,6 +75,7 @@ public class SaladService {
         try {
             return repository.query(specification);
         } catch (VegetableRepositoryException e) {
+            logger.error("Problems with query to repository!", e);
             throw new ServiceException();
         }
     }
@@ -79,6 +86,7 @@ public class SaladService {
         try {
             return repository.query(specification);
         } catch (VegetableRepositoryException e) {
+            logger.error("Problems with query to repository!", e);
             throw new ServiceException();
         }
     }
@@ -89,6 +97,7 @@ public class SaladService {
         try {
             return repository.query(specification);
         } catch (VegetableRepositoryException e) {
+            logger.error("Problems with query to repository!", e);
             throw new ServiceException();
         }
     }
