@@ -25,6 +25,7 @@ public class FruitVegetable extends Vegetable {
         this.vegetable = vegetable;
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object)
             return true;
@@ -42,6 +43,7 @@ public class FruitVegetable extends Vegetable {
         return true;
     }
 
+    @Override
     public int hashCode() {
         int hash = 7;
         long lb1 = Double.doubleToLongBits(this.getWeight());
@@ -55,5 +57,11 @@ public class FruitVegetable extends Vegetable {
         hash = 31 * hash + (vegetable == null ? 0 : vegetable.hashCode());
 
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
+                + carbohydrates + ", " + calories + "]";
     }
 }
