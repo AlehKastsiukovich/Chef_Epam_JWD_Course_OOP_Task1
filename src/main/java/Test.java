@@ -1,9 +1,13 @@
+import by.javatraining.chef.exception.UtilException;
+import by.javatraining.chef.util.TxtFileReader;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Test {
@@ -19,16 +23,16 @@ public class Test {
 //            System.out.println(character);
 //        }
 
-        String line = null;
-        Set<String> str = new HashSet<>();
-        BufferedReader reader = new BufferedReader(new FileReader("text.txt"));
-
-        while ((line = reader.readLine()) != null) {
-
-            str.add(line);
+        TxtFileReader txtFileReader = new TxtFileReader();
+        List<String> list = null;
+        try {
+            list = txtFileReader.readTxtFile();
+        } catch (UtilException e) {
+            e.printStackTrace();
         }
 
-        for (String s: str)
+        for (String s : list) {
             System.out.println(s);
+        }
     }
 }
