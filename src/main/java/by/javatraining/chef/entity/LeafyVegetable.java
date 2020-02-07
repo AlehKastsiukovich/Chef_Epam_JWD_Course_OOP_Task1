@@ -1,6 +1,9 @@
 package by.javatraining.chef.entity;
 
+import org.apache.log4j.Logger;
+
 public class LeafyVegetable extends Vegetable {
+    private static final Logger logger = Logger.getLogger(FruitVegetable.class);
     private LeafyVegetableSpecificType vegetable;
 
     public LeafyVegetable(double weight, double proteins, double carbohydrates,
@@ -10,6 +13,10 @@ public class LeafyVegetable extends Vegetable {
     }
 
     public LeafyVegetable(LeafyVegetableSpecificType example) {
+        if (example == null) {
+            logger.error("Enter null SpecificType object!");
+            throw new NullPointerException();
+        }
         this.vegetable = example;
     }
 
@@ -22,9 +29,14 @@ public class LeafyVegetable extends Vegetable {
     }
 
     public void setVegetable(LeafyVegetableSpecificType vegetable) {
+        if (vegetable == null) {
+            logger.error("Enter null SpecificType object!");
+            throw new NullPointerException();
+        }
         this.vegetable = vegetable;
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object)
             return true;
@@ -42,6 +54,7 @@ public class LeafyVegetable extends Vegetable {
         return true;
     }
 
+    @Override
     public int hashCode() {
         int hash = 7;
         long lb1 = Double.doubleToLongBits(this.getWeight());
@@ -55,5 +68,11 @@ public class LeafyVegetable extends Vegetable {
         hash = 31 * hash + (vegetable == null ? 0 : vegetable.hashCode());
 
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
+                + carbohydrates + ", " + calories + ", " + vegetable + "]";
     }
 }

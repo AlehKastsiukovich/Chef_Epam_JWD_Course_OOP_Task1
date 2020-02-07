@@ -1,16 +1,23 @@
 package by.javatraining.chef.entity;
 
+import org.apache.log4j.Logger;
+
 public class RootVegetable extends Vegetable {
+    private static final Logger logger = Logger.getLogger(FruitVegetable.class);
     private RootVegetableSpecificType vegetable;
 
     public RootVegetable(double weight, double proteins, double carbohydrates,
-                         double calories, RootVegetableSpecificType example) {
+                         double calories, RootVegetableSpecificType vegetable) {
         super(weight, proteins, carbohydrates, calories);
-        this.vegetable = example;
+        this.vegetable = vegetable;
     }
 
-    public RootVegetable(RootVegetableSpecificType example) {
-        this.vegetable = example;
+    public RootVegetable(RootVegetableSpecificType vegetable) {
+        if (vegetable == null) {
+            logger.error("Enter null SpecificType object!");
+            throw new NullPointerException();
+        }
+        this.vegetable = vegetable;
     }
 
     public RootVegetable() {
@@ -22,9 +29,14 @@ public class RootVegetable extends Vegetable {
     }
 
     public void setVegetable(RootVegetableSpecificType vegetable) {
+        if (vegetable == null) {
+            logger.error("Enter null SpecificType object!");
+            throw new NullPointerException();
+        }
         this.vegetable = vegetable;
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object)
             return true;
@@ -42,6 +54,7 @@ public class RootVegetable extends Vegetable {
         return true;
     }
 
+    @Override
     public int hashCode() {
         int hash = 7;
         long lb1 = Double.doubleToLongBits(this.getWeight());
@@ -55,5 +68,11 @@ public class RootVegetable extends Vegetable {
         hash = 31 * hash + (vegetable == null ? 0 : vegetable.hashCode());
 
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
+                + carbohydrates + ", " + calories + ", " + vegetable + "]";
     }
 }
