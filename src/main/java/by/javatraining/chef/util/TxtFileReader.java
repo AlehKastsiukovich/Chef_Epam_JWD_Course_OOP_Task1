@@ -41,6 +41,13 @@ public class TxtFileReader {
         } catch (IOException e) {
             logger.error("Can't read file!", e);
             throw new UtilException();
+        } finally {
+            try {
+                bufferedReader.close();
+            } catch (IOException e) {
+                logger.error("Can't close bufferedReader stream!", e);
+                throw new UtilException();
+            }
         }
 
         return stringObjects;

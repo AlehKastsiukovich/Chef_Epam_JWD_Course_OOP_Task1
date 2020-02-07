@@ -42,6 +42,26 @@ public abstract class Vegetable implements Comparable<Vegetable> {
         return this.id.compareTo(vegetable.id);
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setProteins(double proteins) {
+        this.proteins = proteins;
+    }
+
+    public void setCarbohydrates(double carbohydrates) {
+        this.carbohydrates = carbohydrates;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
     public String toString() {
         return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
                 + carbohydrates + ", " + calories + "]";

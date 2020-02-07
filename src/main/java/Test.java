@@ -12,27 +12,25 @@ import java.util.Set;
 
 public class Test {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        A a = new B();
+        B b = (B)a;
+        a.name = "Aleh";
+        b.id = 5;
 
-//        byte[] filebytes = Files.readAllBytes(Paths.get("text.txt"));
-//        String string = new String(filebytes);
-//        System.out.println(string);
-//        char[] ch = string.toCharArray();
-//
-//        for (Character character : ch) {
-//            System.out.println(character);
-//        }
+        System.out.println(b.toString());
 
-        TxtFileReader txtFileReader = new TxtFileReader();
-        List<String> list = null;
-        try {
-            list = txtFileReader.readTxtFile();
-        } catch (UtilException e) {
-            e.printStackTrace();
-        }
+    }
+}
 
-        for (String s : list) {
-            System.out.println(s);
-        }
+class A {
+    String name;
+}
+
+class B extends A {
+    int id;
+
+    public String toString() {
+        return name + " " + id;
     }
 }
