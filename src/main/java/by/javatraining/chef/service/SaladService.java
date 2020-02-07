@@ -40,6 +40,7 @@ public class SaladService {
             logger.debug("Enter null object to addVegetable method!");
             throw new ServiceException();
         }
+
         try {
             repository.remove(vegetable);
         } catch (VegetableRepositoryException e) {

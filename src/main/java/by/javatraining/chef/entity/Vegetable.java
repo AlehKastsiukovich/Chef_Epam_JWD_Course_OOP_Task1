@@ -42,7 +42,7 @@ public abstract class Vegetable implements Comparable<Vegetable> {
     }
 
     public int compareTo(Vegetable vegetable) {
-        return this.id.compareTo(vegetable.id);
+        return Integer.compare(this.id, vegetable.id);
     }
 
     public void setId(Integer id) {
@@ -86,7 +86,7 @@ public abstract class Vegetable implements Comparable<Vegetable> {
     }
 
     public String toString() {
-        return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
+        return getClass().getSimpleName() + "[" + id + ", " + weight + ", " + proteins + ", "
                 + carbohydrates + ", " + calories + "]";
     }
 }

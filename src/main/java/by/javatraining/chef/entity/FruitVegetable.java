@@ -72,7 +72,7 @@ public class FruitVegetable extends Vegetable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "[" + weight + ", " + proteins + ", "
+        return getClass().getSimpleName() + "["+ id + ", " + weight + ", " + proteins + ", "
                 + carbohydrates + ", " + calories + ", " + vegetable + "]";
     }
 }
